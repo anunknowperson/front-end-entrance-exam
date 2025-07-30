@@ -43,6 +43,11 @@
     z-index: 1;
     text-align: center;
 }
+
+.wide-tooltip {
+    min-width: 64px;
+}
+
 .tools-grid {
     width: auto;
 
