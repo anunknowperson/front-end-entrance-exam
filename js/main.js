@@ -179,7 +179,7 @@ function initializeExperience() {
             
         }
     });
-
+    
     document.addEventListener('keydown', (e) => {
         if (e.target.classList.contains('skill-item') && e.key === 'Backspace') {
             const currentItem = e.target;
