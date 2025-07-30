@@ -1,6 +1,16 @@
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { initializeRippleEffect } from "./ripple.js";
+import { 
+    saveToLocalStorage, 
+    loadFromLocalStorage, 
+    clearLocalStorage,
+    initializeAutoSave,
+    saveProgressBars,
+    loadProgressBars,
+    saveColorState,
+    loadColorState
+} from "./storage/storage.js";
 
 function initializeLanguages() {
     const languagesSection = document.querySelector('.languages');
@@ -35,11 +45,17 @@ function initializeLanguages() {
         newInput.focus();
         selectAllText(newInput);
         
+        setTimeout(() => {
+            saveToLocalStorage();
+            saveProgressBars();
+        }, 100);
     });
 
     deleteButton.addEventListener('click', () => {
         labelsColumn.innerHTML = '';
         controlsColumn.innerHTML = '';
+        saveToLocalStorage();
+        saveProgressBars();
     });
 
     Array.from(controlsColumn.children).forEach(initializeProgressBar);
@@ -60,6 +76,7 @@ function initializeProgressBar(progressControls) {
             const rect = progressContainer.getBoundingClientRect();
             const percentage = ((e.clientX - rect.left) / rect.width) * 100;
             setProgress(progressBar, handle, percentage);
+            saveProgressBars();
         }
     });
 
@@ -81,6 +98,7 @@ function initializeProgressBar(progressControls) {
         isDragging = false;
         document.removeEventListener('mousemove', drag);
         document.removeEventListener('mouseup', stopDrag);
+        saveProgressBars();
     }
 }
 
@@ -141,10 +159,12 @@ function initializeExperience() {
         `;
 
         experienceRows.appendChild(newBlock);
+        setTimeout(() => saveToLocalStorage(), 100);
     });
 
     deleteButton.addEventListener('click', () => {
         experienceRows.innerHTML = '';
+        saveToLocalStorage();
     });
 
     document.addEventListener('click', (e) => {
@@ -161,6 +181,7 @@ function initializeExperience() {
             newSkill.focus();
             selectAllText(newSkill);
             
+            setTimeout(() => saveToLocalStorage(), 100);
         }
     });
 
@@ -169,6 +190,7 @@ function initializeExperience() {
             e.preventDefault();
 
             const currentItem = e.target;
+            const skillList = currentItem.parentElement;
 
             const newSkill = document.createElement('li');
             newSkill.className = 'editable regular skill-item';
@@ -177,9 +199,10 @@ function initializeExperience() {
             currentItem.insertAdjacentElement('afterend', newSkill);
             newSkill.focus();
             
+            setTimeout(() => saveToLocalStorage(), 100);
         }
     });
-    
+
     document.addEventListener('keydown', (e) => {
         if (e.target.classList.contains('skill-item') && e.key === 'Backspace') {
             const currentItem = e.target;
@@ -204,6 +227,7 @@ function initializeExperience() {
                 }
 
                 e.preventDefault();
+                setTimeout(() => saveToLocalStorage(), 100);
             }
         }
     });
@@ -235,10 +259,12 @@ function initializeEducation() {
 
         educationGrid.appendChild(newBlock);
         
+        setTimeout(() => saveToLocalStorage(), 100);
     });
 
     deleteButton.addEventListener('click', () => {
         educationGrid.innerHTML = '';
+        saveToLocalStorage();
     });
 }
 
@@ -261,10 +287,12 @@ function initializeInterests() {
         newInterest.focus();
         selectAllText(newInterest);
         
+        setTimeout(() => saveToLocalStorage(), 100);
     });
 
     deleteButton.addEventListener('click', () => {
         interestsGrid.innerHTML = '';
+        saveToLocalStorage();
     });
 }
 
@@ -282,6 +310,7 @@ function initializeColorPicker() {
     colorPicker.addEventListener('change', (e) => {
         const newColor = e.target.value;
         document.documentElement.style.setProperty('--color-primary', newColor);
+        saveColorState();
     });
 }
 
@@ -347,8 +376,27 @@ function initializePDFDownload() {
     });
 }
 
+function initializeClearButton() {
+    const clearBtn = document.getElementById('data-reset-btn');
+    
+    clearBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (confirm('Вы уверены что хотите сбросить резюме?')) {
+            clearLocalStorage();
+        }
+    });
+    
+}
 
 document.addEventListener('DOMContentLoaded', () => {
+    const wasCleared = sessionStorage.getItem('dataCleared') === 'true';
+    
+    if (!wasCleared) {
+        loadFromLocalStorage();
+        loadProgressBars();
+        loadColorState();
+    }
+    
     initializeLanguages();
     initializeExperience();
     initializeEducation();
@@ -356,4 +404,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeColorPicker();
     initializePDFDownload();
     initializeRippleEffect();
+    initializeClearButton();
+    
+    initializeAutoSave();
+    
+    if (wasCleared) {
+        sessionStorage.removeItem('dataCleared');
+    }
 });
