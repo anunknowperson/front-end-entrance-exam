@@ -1,0 +1,61 @@
+.tools-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+
+    @media (max-width: 600px) {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+.tools-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tools-block {
+    position: relative;
+    width: 76px;
+    border-radius: 6px;
+    padding: 16px 4px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.tooltip {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    font-size: 5px;
+    font-weight: 500;
+    line-height: 142%;
+    letter-spacing: 0%;
+    border-radius: 59px;
+    padding: 2px 6px;
+    white-space: nowrap;
+    z-index: 1;
+    text-align: center;
+}
+.tools-grid {
+    width: auto;
+
+
+    gap: 16px;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+
+}
+
+.tools-grid img {
+    width: 17px;
+    height: 17px;
+}

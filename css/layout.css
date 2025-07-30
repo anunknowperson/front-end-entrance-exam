@@ -1,0 +1,129 @@
+.resume-container {
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+}
+
+.grid-container {
+    max-width: 555px;
+    min-height: 812px;
+    display: grid;
+    grid-template-columns: repeat(4, 124px);
+    gap: 20px;
+}
+
+.grid-item {
+    background-color: #F0F0F0;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-img-item {
+    grid-column: span 1;
+
+    height: 124px;
+    padding: 0px;
+    background-color: #e8e8e8;
+}
+
+.name {
+    grid-column: span 1;
+
+    min-height: 124px;
+    justify-content: space-between;
+}
+
+.languages {
+    grid-column: span 2;
+
+    min-height: 124px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.experience {
+    grid-column: span 3;
+    min-height: 359px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.tools {
+    grid-column: span 1;
+    min-height: 359px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding-bottom: 0px;
+
+    @media (max-width: 600px) {
+        min-height: unset;
+        padding-bottom: 10px;
+    }
+}
+
+.education {
+    grid-column: span 2;
+    min-height: 289px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding-bottom: 11px;
+}
+
+.extra {
+    grid-column: span 2;
+    min-height: 289px;
+    padding: 0;
+    background-color: unset;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.grid-item h1,
+.grid-item h2,
+.grid-item h3 {
+    font-size: inherit;
+    margin: 0;
+    font-weight: inherit;
+}
+
+.grid-item p {
+    margin: 0;
+}
+
+
+.block-header-with-buttons {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    .resume-container {
+        width: 100%;
+        max-width: 576px;
+        padding: 4px 7px;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .grid-item {
+        grid-column: span 1 !important;
+        width: 100% !important;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}

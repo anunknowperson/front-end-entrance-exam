@@ -1,0 +1,13 @@
+:root {
+    --text-accent-size: 10px;
+    --text-accent-line-height: 150%;
+    --text-accent-weight: 500;
+    --text-accent-color: #000000;
+
+    --text-regular-size: 8px;
+    --text-regular-line-height: 150%;
+    --text-regular-weight: 400;
+    --text-regular-color: #000000;
+
+    --color-primary: #28D979;
+}

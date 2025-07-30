@@ -1,0 +1,79 @@
+.editable {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0px;
+    margin: 0px;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+    cursor: text;
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    min-width: 20px;
+    min-height: 1em;
+    word-wrap: break-word !important;
+    white-space: normal !important;
+    max-width: 100%;
+}
+
+.editable:empty:before {
+    content: attr(data-placeholder);
+    color: #999;
+    font-style: italic;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .editable {
+        transition: none;
+    }
+}
+
+.editable:hover:not(.static) {
+    background-color: rgba(0, 0, 0, 0.03);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.editable:focus:not(.static) {
+    background-color: rgba(59, 130, 246, 0.08);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+
+}
+
+.editable.single-line {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.skill-item.editable {
+    white-space: normal;
+    display: block;
+}
+
+.editable[contenteditable="true"] {
+    -webkit-user-modify: read-write-plaintext-only;
+}
+
+.accent {
+    font-size: var(--text-accent-size)  !important;
+    line-height: var(--text-accent-line-height)  !important;
+    font-weight: var(--text-accent-weight)  !important;
+    color: var(--text-accent-color)  !important;
+}
+
+.header-label {
+    font-size: 14px  !important;
+    line-height: var(--text-accent-line-height)  !important;
+    font-weight: var(--text-accent-weight)  !important;
+    color: var(--text-accent-color)  !important;
+    
+    margin: 0;
+}
+
+.regular {
+    font-size: var(--text-regular-size)  !important;
+    line-height: var(--text-regular-line-height)  !important;
+    font-weight: var(--text-regular-weight)  !important;
+    color: var(--text-regular-color)  !important;
+    margin: 0;
+}

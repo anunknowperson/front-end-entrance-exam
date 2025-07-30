@@ -1,13 +1,300 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Resume Builder</title>
+</head>
+
+<body>
+    <header class="editor-header">
+        <div>
+            <h1 class="header-title">Редактор резюме</h1>
+        </div>
+        <div class="editor-controls">
+            <div class="color-picker-container">
+                <label for="primary-color">Основной цвет:</label>
+                <input type="color" id="primary-color" value="#28D979">
+            </div>
+            <button id="download-pdf" class="download-btn">Скачать PDF</button>
+        </div>
+    </header>
+
+    <main class="resume-container">
+        <article class="grid-container">
+            <!-- First Row -->
+            <div class="grid-item profile-img-item">
+                <img class="profile-img" src="cat.jpeg" alt="Profile picture">
+            </div>
+
+            <header class="grid-item name">
+                <p class="editable accent" contenteditable="true">Hello 👋🏻 I'm</p>
+
+                <div class="hello-desc-block">
+                    <h2 class="editable name-label" contenteditable="true">Barsik</h2>
+                    <p class="editable specialization-label" contenteditable="true">UX/UI Cat</p>
+                </div>
+            </header>
+
+            <section class="grid-item languages">
+                <div class="block-header-with-buttons">
+                    <h2 class="editable header-label" contenteditable="true">Languages</h2>
+                    <button class="add-item-btn" aria-label="Add language">+</button>
+                    <button class="delete-btn" aria-label="Delete">
+                        <img src="/trash.svg" alt="Delete" class="delete-icon">
+                    </button>
+                </div>
+                <div class="languages-list">
+                    <div class="labels-column">
+                        <div class="editable language-label" contenteditable="true">English</div>
+                        <div class="editable language-label" contenteditable="true">Spanish</div>
+                    </div>
+                    <div class="controls-column">
+                        <div class="progress-controls">
+                            <div class="progress-container" role="slider" aria-label="English proficiency" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" data-value="90"></div>
+                                <div class="progress-handle"></div>
+                            </div>
+                        </div>
+                        <div class="progress-controls">
+                            <div class="progress-container" role="slider" aria-label="Spanish proficiency" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                                <div class="progress-bar" data-value="60"></div>
+                                <div class="progress-handle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Second Row -->
+            <section class="grid-item experience">
+                <div class="block-header-with-buttons">
+                    <h2 class="editable header-label" contenteditable="true">Experience</h2>
+
+                    <button class="add-item-btn" aria-label="Add language">+</button>
+                    <button class="delete-btn" aria-label="Delete">
+                        <img src="/trash.svg" alt="Delete" class="delete-icon">
+                    </button>
+
+                </div>
+
+
+                <div class="experience-rows">
+
+
+                    <!-- First experience block - Primary color -->
+                    <article class="experience-block primary">
+                        <header class="experience-block-head">
+                            <span class="editable regular" contenteditable="true">Jun. 2023 - Present</span>
+                        </header>
+                        <div class="experience-block-content">
+                            <div class="experience-job-info">
+                                <h3 class="editable role-name-label" contenteditable="true">Marketing Manager</h3>
+                                <div class="experience-about-job">
+                                    <span class="editable regular job-info-label" contenteditable="true">Pankayam</span>
+                                    <span class="regular" aria-hidden="true">|</span>
+                                    <span class="editable regular job-info-label" contenteditable="true">Full-time</span>
+                                </div>
+                            </div>
+                            <div class="skill-list-container">
+                                <ul class="skill-list">
+                                    <li class="editable regular skill-item" contenteditable="true">Strategy development and planning of campaigns that promote the business and generate genuine traffic</li>
+                                    <li class="editable regular skill-item" contenteditable="true">SEO Content Creation for Blogs, Website, Social media</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Second experience block - White background -->
+                    <article class="experience-block">
+                        <header class="experience-block-head">
+                            <span class="editable regular" contenteditable="true">2017 - Present</span>
+                        </header>
+                        <div class="experience-block-content">
+                            <div class="experience-job-info">
+                                <h3 class="editable role-name-label" contenteditable="true">Graphic / Web Designer</h3>
+                                <div class="experience-about-job">
+                                    <span class="editable regular job-info-label" contenteditable="true">Freelance</span>
+                                </div>
+                            </div>
+                            <div class="skill-list-container">
+                                <ul class="skill-list">
+                                    <li class="editable regular skill-item" contenteditable="true">Development of internal projects from scratch, product design of brands</li>
+                                    <li class="editable regular skill-item" contenteditable="true">Landing page, webapps and hybrid apps</li>
+                                    <li class="editable regular skill-item" contenteditable="true">Coordinating with outside agencies, art services, web designer, marketing, printers, and colleagues as necessary</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Third experience block - White background -->
+                    <article class="experience-block">
+                        <header class="experience-block-head">
+                            <span class="editable regular" contenteditable="true">Sep. 2021 - Jun. 2023</span>
+                        </header>
+                        <div class="experience-block-content">
+                            <div class="experience-job-info">
+                                <h3 class="editable role-name-label" contenteditable="true">Legal Assistant</h3>
+                                <div class="experience-about-job">
+                                    <span class="editable regular job-info-label" contenteditable="true">Law Firm</span>
+                                    <span class="regular" aria-hidden="true">|</span>
+                                    <span class="editable regular job-info-label" contenteditable="true">Intern</span>
+                                </div>
+                            </div>
+                            <div class="skill-list-container">
+                                <ul class="skill-list">
+                                    <li class="editable regular skill-item" contenteditable="true">Provide administrative support to lawyer and enhance office effectiveness</li>
+                                    <li class="editable regular skill-item" contenteditable="true">Handle communicationwith clients, witnesses etc.</li>
+                                    <li class="editable regular skill-item" contenteditable="true">Prepare case briefs and summarize depositions, interrogatories and testimony</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="grid-item tools">
+                <h2 class="editable header-label" contenteditable="true">Tools</h2>
+
+                <div class="tools-rows">
+                    <div class="tools-container">
+                        <div class="tooltip editable static" contenteditable="true">design</div>
+                        <div class="tools-block">
+                            <div class="tools-grid">
+                                <img src="photoshop.png" alt="Tool 1">
+                                <img src="photoshop.png" alt="Tool 2">
+                                <img src="photoshop.png" alt="Tool 3">
+                                <img src="photoshop.png" alt="Tool 4">
+                                <img src="photoshop.png" alt="Tool 5">
+                                <img src="photoshop.png" alt="Tool 6">
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="tools-container">
+                        <div class="tools-block">
+                            <div class="tools-grid">
+                                <img src="photoshop.png" alt="Tool 1">
+                                <img src="photoshop.png" alt="Tool 2">
+                                <img src="photoshop.png" alt="Tool 3">
+                                <img src="photoshop.png" alt="Tool 4">
+                            </div>
+                        </div>
+                        <header class="tooltip editable static" contenteditable="true">no-code</header>
+                    </div>
+
+                    <div class="tools-container">
+                        <div class="tools-block">
+                            <div class="tools-grid">
+                                <img src="photoshop.png" alt="Tool 1">
+                                <img src="photoshop.png" alt="Tool 2">
+                                <img src="photoshop.png" alt="Tool 3">
+                                <img src="photoshop.png" alt="Tool 4">
+                            </div>
+                        </div>
+                        <header class="tooltip editable static" contenteditable="true">artificial intelligence</header>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Third Row -->
+            <section class="grid-item education">
+                <header class="block-header-with-buttons">
+                    <h2 class="editable header-label" contenteditable="true">Education</h2>
+                    <button class="add-item-btn" aria-label="Add language">+</button>
+                    <button class="delete-btn" aria-label="Delete">
+                        <img src="/trash.svg" alt="Delete" class="delete-icon">
+                    </button>
+                </header>
+
+                <div class="education-grid">
+                    <article class="education-block">
+                        <div class="education-block-panel">
+                            <header class="education-top-bar">
+                                <div class="editable education-name-label" contenteditable="true">2023</div>
+                                <img width="13" height="15" src="heart.svg" alt="Latest education">
+                            </header>
+                            <div class="education-content">
+                                <h3 class="editable education-name-label" contenteditable="true">Law</h3>
+                                <div class="editable education-tags-label" contenteditable="true">#UX #UI #research #DesignSystem #Ui #wireframing #figma #Ux</div>
+                            </div>
+
+                            <footer class="editable regular" contenteditable="true">Coursera</footer>
+                        </div>
+                    </article>
+
+                    <article class="education-block">
+                        <div class="education-block-panel">
+                            <header class="education-top-bar">
+                                <div class="editable education-name-label" contenteditable="true">2017 - 2022</div>
+                            </header>
+                            <div class="education-content">
+                                <h3 class="editable education-name-label" contenteditable="true">Law</h3>
+                                <div class="editable education-tags-label" contenteditable="true">#law #legalStudies #contracts #internationalLaws</div>
+                            </div>
+
+                            <footer class="editable regular" contenteditable="true">University of Kerala</footer>
+                        </div>
+                    </article>
+
+                    <article class="education-block">
+                        <div class="education-block-panel">
+                            <header class="education-top-bar">
+                                <div class="editable education-name-label" contenteditable="true">2017</div>
+                            </header>
+                            <div class="education-content">
+                                <h3 class="editable education-name-label" contenteditable="true">Graphic Design</h3>
+                                <div class="editable education-tags-label" contenteditable="true">#branding #web #illustration #adobe</div>
+                            </div>
+
+                            <footer class="editable regular" contenteditable="true">Coursera</footer>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <div class="grid-item extra">
+                <article class="interests-block">
+                    <header class="block-header-with-buttons">
+                        <h2 class="editable header-label" contenteditable="true">Interests</h2>
+                        <button class="add-item-btn" aria-label="Add language">+</button>
+                        <button class="delete-btn" aria-label="Delete">
+                            <img src="/trash.svg" alt="Delete" class="delete-icon">
+                        </button>
+                    </header>
+
+                    <div class="interests-grid">
+                        <span class="editable interest" contenteditable="true">branding</span>
+                        <span class="editable interest" contenteditable="true">design</span>
+                        <span class="editable interest" contenteditable="true">photography</span>
+                        <span class="editable interest" contenteditable="true">artificial intelligence</span>
+                        <span class="editable interest" contenteditable="true">illustration</span>
+                        <span class="editable interest" contenteditable="true">typography</span>
+                        <span class="editable interest" contenteditable="true">social networks</span>
+                        <span class="editable interest" contenteditable="true">research</span>
+                        <span class="editable interest" contenteditable="true">drone pilot</span>
+                        <span class="editable interest" contenteditable="true">games</span>
+                    </div>
+                </article>
+
+                <aside class="contacts-block">
+                    <h2 class="editable contacts-header-label" contenteditable="true">Let's chat! I'm ready to work on exciting projects</h2>
+                    <address class="editable contacts-contact-label" contenteditable="true">kiselev.sereja@gmail.com</address>
+                </aside>
+            </div>
+        </article>
+    </main>
     <script type="module" src="./js/main.js"></script>
-  </body>
+</body>
+
 </html>

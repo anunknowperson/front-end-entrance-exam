@@ -1,0 +1,101 @@
+.add-item-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    line-height: 1;
+    border: 1px dashed #999;
+    background-color: transparent;
+    color: #666;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.add-item-btn:hover {
+    border-color: #4CAF50;
+    color: #4CAF50;
+    background-color: rgba(76, 175, 80, 0.1);
+}
+
+.add-item-btn:focus {
+    outline: 2px solid #4CAF50;
+    outline-offset: 2px;
+}
+
+
+@media print {
+    .add-item-btn {
+        display: none !important;
+    }
+}
+
+.pdf-mode .add-item-btn {
+    display: none !important;
+}
+
+.delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    line-height: 1;
+    border: 1px dashed #999;
+    background-color: transparent;
+    color: #666;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    border-color: #f44336;
+    color: #f44336;
+    background-color: rgba(244, 67, 54, 0.1);
+}
+
+.delete-btn:focus {
+    outline: 2px solid #f44336;
+    outline-offset: 2px;
+}
+
+
+.delete-icon {
+    width: 10px;
+    height: 10px;
+    filter: invert(42%) sepia(0%) saturate(1176%) hue-rotate(169deg) brightness(92%) contrast(83%);
+    transition: all 0.2s;
+}
+
+.delete-btn:hover .delete-icon {
+    filter: invert(37%) sepia(93%) saturate(747%) hue-rotate(331deg) brightness(96%) contrast(94%);
+}
+
+@media print {
+    .delete-btn {
+        display: none !important;
+    }
+}
+
+.pdf-mode .delete-btn {
+    display: none !important;
+}
+
+.delete-icon {
+    width: 10px;
+    height: 10px;
+    filter: invert(42%) sepia(0%) saturate(1176%) hue-rotate(169deg) brightness(92%) contrast(83%);
+    transition: all 0.2s;
+}
+
+.delete-btn:hover .delete-icon {
+    filter: invert(37%) sepia(93%) saturate(747%) hue-rotate(331deg) brightness(96%) contrast(94%);
+}
