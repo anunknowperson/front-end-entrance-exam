@@ -1,75 +1,75 @@
 .editor-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  gap: 20px;
+
+  .title {
+    font-size: 20px !important;
+  }
+
+  .controls {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    padding: 30px;
     gap: 20px;
 
-    .title {
-        font-size: 20px !important;
+    .color-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      label {
+        font-size: 12px;
+        font-weight: 500;
+        color: #555;
+      }
+
+      input[type="color"] {
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+      }
     }
 
-    .controls {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+    .btn-download {
+      background-color: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
 
-        .color-picker {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-
-            label {
-                font-size: 12px;
-                font-weight: 500;
-                color: #555;
-            }
-
-            input[type="color"] {
-                width: 20px;
-                height: 20px;
-                border: 2px solid #ddd;
-                border-radius: 4px;
-                cursor: pointer;
-                outline: none;
-            }
-        }
-
-        .btn-download {
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-
-            &:hover {
-                background-color: #22c766;
-            }
-        }
-
-        .btn-reset {
-            background-color: red;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-
-            &:hover {
-                background-color: darkred;
-            }
-        }
+      &:hover {
+        background-color: #22c766;
+      }
     }
 
-    @media print {
-        display: none !important;
+    .btn-reset {
+      background-color: red;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: darkred;
+      }
     }
+  }
+
+  @media print {
+    display: none !important;
+  }
 }

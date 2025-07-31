@@ -1,133 +1,132 @@
 .experience-block {
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    background-color: white;
-    padding: 8px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: white;
+  padding: 8px;
 }
 
 .experience-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .experience-block-head {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .experience-block-content {
-    display: flex;
-    flex-direction: row;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
 }
 
 .experience-job-info {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-
-    @media (min-width: 600px) {
-        min-width: 124px;
-    }
+  @media (min-width: 600px) {
+    min-width: 124px;
+  }
 }
 
 .experience-about-job {
-    display: flex;
-    flex-direction: row;
-    gap: 6px;
-    align-items: center;
-    color: var(--text-accent-color);
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  color: var(--text-accent-color);
 }
 
 .skill-list-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .skill-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
 
 .skill-item {
-    position: relative;
-    padding-left: 6px;
-    line-height: 1.4;
-    word-wrap: break-word;
-    min-height: 1.2em;
+  position: relative;
+  padding-left: 6px;
+  line-height: 1.4;
+  word-wrap: break-word;
+  min-height: 1.2em;
 }
 
 .skill-item::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: var(--text-accent-color);
-    font-weight: bold;
-    font-size: 0.9em;
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--text-accent-color);
+  font-weight: bold;
+  font-size: 0.9em;
 }
 
 .skill-item:empty::before {
-    content: "• ";
+  content: "• ";
 }
 
 .skill-item:focus {
-    outline: none;
+  outline: none;
 }
 
 .add-skill-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 10px;
-    font-weight: bold;
-    color: var(--text-accent-color);
-    padding: 0px;
-    margin: 0;
-    width: auto;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 2px;
-    transition: background-color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  color: var(--text-accent-color);
+  padding: 0px;
+  margin: 0;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  transition: background-color 0.2s ease;
 }
 
 .add-skill-btn:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .add-skill-btn:focus {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 1px;
+  outline: 2px solid var(--color-primary);
+  outline-offset: 1px;
 }
 
 .job-info-label {
-    display: inline-block;
-    min-width: 20px;
-    color: var(--text-accent-color);
+  display: inline-block;
+  min-width: 20px;
+  color: var(--text-accent-color);
 }
 
 .role-name-label {
-    font-size: 10px !important;
-    line-height: 150% !important;
-    font-weight: 500 !important;
-    color: var(--text-accent-color);
+  font-size: 10px !important;
+  line-height: 150% !important;
+  font-weight: 500 !important;
+  color: var(--text-accent-color);
 }
 
 .experience-block:first-child {
-    background-color: var(--color-primary);
+  background-color: var(--color-primary);
 }
 
 .experience-block:first-child .editable,
@@ -137,17 +136,17 @@
 .experience-block:first-child .role-name-label,
 .experience-block:first-child .regular,
 .experience-block:first-child .skill-item {
-    color: white !important;
+  color: white !important;
 }
 
 .experience-block:first-child .skill-item::before {
-    color: white !important;
+  color: white !important;
 }
 
 .experience-block:first-child .add-skill-btn {
-    color: white !important;
+  color: white !important;
 }
 
 .experience-block:first-child .add-skill-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }

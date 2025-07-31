@@ -1,26 +1,26 @@
 .ripple-container {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.4);
-    transform: scale(0);
-    animation: ripple-animation 0.6s linear;
-    pointer-events: none;
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
 }
 
 .ripple-dark {
-    background-color: rgba(0, 0, 0, 0.08);
+  background-color: rgba(0, 0, 0, 0.08);
 }
 
 @keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 .experience-block,
@@ -34,10 +34,10 @@
 .education-card,
 .contact-section,
 .interests {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .editable {
-    position: relative;
+  position: relative;
 }
