@@ -49,7 +49,7 @@ function restoreSectionHeaders(headers) {
     }
     
     if (headers.interests) {
-        const interestsHeader = document.querySelector('.interests-block .header-label');
+        const interestsHeader = document.querySelector('.interests .header-label');
         if (interestsHeader) {
             interestsHeader.textContent = headers.interests;
         }
@@ -89,9 +89,9 @@ function restoreAllContent(sections) {
     }
     
     if (sections.contacts) {
-        const contactsBlock = document.querySelector('.contacts-block');
-        if (contactsBlock) {
-            const editables = contactsBlock.querySelectorAll('[contenteditable="true"]');
+        const contactsSection = document.querySelector('.contact-section');
+        if (contactsSection) {
+            const editables = contactsSection.querySelectorAll('[contenteditable="true"]');
             Object.keys(sections.contacts).forEach((key, index) => {
                 if (editables[index]) {
                     editables[index].textContent = sections.contacts[key];
@@ -101,10 +101,10 @@ function restoreAllContent(sections) {
     }
     
     if (sections.languages) {
-        const languageLabels = document.querySelectorAll('.languages-list .labels-column .language-label');
+        const languageNames = document.querySelectorAll('.skill-list .names .name');
         sections.languages.forEach((text, index) => {
-            if (languageLabels[index]) {
-                languageLabels[index].textContent = text;
+            if (languageNames[index]) {
+                languageNames[index].textContent = text;
             }
         });
     }
@@ -115,7 +115,7 @@ function restoreAllContent(sections) {
             const block = experienceBlocks[blockIndex];
             if (!block) return;
             
-            const dateEl = block.querySelector('.experience-block-head time');
+            const dateEl = block.querySelector('.experience-block-head span');
             if (dateEl) dateEl.textContent = blockData.date;
             
             const roleEl = block.querySelector('.role-name-label');
@@ -143,30 +143,30 @@ function restoreAllContent(sections) {
     }
     
     if (sections.education) {
-        const educationBlocks = document.querySelectorAll('.education-grid .education-block');
+        const educationCards = document.querySelectorAll('.education-grid .education-card');
         sections.education.forEach((blockData, index) => {
-            const block = educationBlocks[index];
-            if (!block) return;
+            const card = educationCards[index];
+            if (!card) return;
             
-            const dateEl = block.querySelector('.education-top-bar time');
+            const dateEl = card.querySelector('.header .title');
             if (dateEl) dateEl.textContent = blockData.date;
             
-            const titleEl = block.querySelector('.education-content h3');
+            const titleEl = card.querySelector('.details h3');
             if (titleEl) titleEl.textContent = blockData.title;
             
-            const tagsEl = block.querySelector('.education-tags-label');
+            const tagsEl = card.querySelector('.tags');
             if (tagsEl) tagsEl.textContent = blockData.tags;
             
-            const institutionEl = block.querySelector('footer');
+            const institutionEl = card.querySelector('footer');
             if (institutionEl) institutionEl.textContent = blockData.institution;
         });
     }
 
     if (sections.interests) {
-        const interests = document.querySelectorAll('.interests-grid .interest');
+        const tags = document.querySelectorAll('.tag-list .tag');
         sections.interests.forEach((text, index) => {
-            if (interests[index]) {
-                interests[index].textContent = text;
+            if (tags[index]) {
+                tags[index].textContent = text;
             }
         });
     }
@@ -182,14 +182,14 @@ export function loadProgressBars() {
     
     try {
         const progressData = JSON.parse(savedProgressData);
-        const progressBars = document.querySelectorAll('.progress-bar');
+        const fills = document.querySelectorAll('.fill');
         
-        progressBars.forEach((bar, index) => {
+        fills.forEach((fill, index) => {
             const value = progressData[`progress_${index}`];
             if (value !== undefined) {
-                bar.setAttribute('data-value', value);
-                bar.style.width = value + '%';
-                const handle = bar.parentElement.querySelector('.progress-handle');
+                fill.setAttribute('data-value', value);
+                fill.style.width = value + '%';
+                const handle = fill.parentElement.querySelector('.handle');
                 if (handle) {
                     handle.style.left = `calc(${value}% - 8px)`;
                 }

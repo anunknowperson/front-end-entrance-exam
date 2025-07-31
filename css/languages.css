@@ -1,112 +1,87 @@
-.languages-list {
-    display: flex;
-    flex-direction: row;
-    gap: 17px;
-}
+.languages {
+    .skill-list {
+        display: flex;
+        flex-direction: row;
+        gap: 17px;
 
-.labels-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 0 0 auto;
-}
+        .names {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 0 0 auto;
 
-.controls-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
-}
+            .name {
+                font-size: 10px;
+                line-height: 104%;
+                font-weight: 500;
+                color: var(--text-accent-color);
+                min-height: 10px;
+                min-width: 30px;
+                white-space: nowrap;
+            }
+        }
 
-.progress-controls {
-    display: flex;
-    align-items: center;
-    gap: 17px;
-}
+        .levels {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
 
+            .level-control {
+                display: flex;
+                align-items: center;
+                gap: 17px;
 
+                .slider {
+                    flex: 1;
+                    height: 11px;
+                    background-color: #e0e0e0;
+                    border-radius: 3px;
+                    position: relative;
+                    cursor: pointer;
+                    user-select: none;
 
-.language-item {
-    display: flex;
-    align-items: center;
-    gap: 17px;
-}
+                    .fill {
+                        height: 100%;
+                        background-color: var(--color-primary);
+                        border-radius: 3px;
+                        transition: width 0.2s ease;
+                        position: relative;
 
-.progress-container {
-    flex: 1;
-    height: 11px;
-    background-color: #e0e0e0;
-    border-radius: 3px;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-}
+                        @media print {
+                            color-adjust: exact !important;
+                            print-color-adjust: exact !important;
+                            background-color: var(--color-primary) !important;
+                        }
+                    }
 
-.progress-bar {
-    height: 100%;
-    background-color: var(--color-primary);
-    border-radius: 3px;
-    transition: width 0.2s ease;
-    position: relative;
+                    .handle {
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 16px;
+                        height: 16px;
+                        background-color: #fff;
+                        border: 2px solid #4CAF50;
+                        border-radius: 50%;
+                        cursor: grab;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+                        user-select: none;
 
-    @media print {
-        color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        background-color: var(--color-primary) !important;
+                        &:active {
+                            cursor: grabbing;
+                        }
+
+                        @media print {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
     }
-}
 
-.progress-handle {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
-    background-color: #fff;
-    border: 2px solid #4CAF50;
-    border-radius: 50%;
-    cursor: grab;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    user-select: none;
-
-    @media print {
-        display: none;
-    }
-}
-
-.progress-handle:active {
-    cursor: grabbing;
-}
-
-
-
-
-.language-label {
-    font-size: 10px;
-    line-height: 104%;
-    font-weight: 500;
-    color: var(--text-accent-color);
-    min-height: 10px;
-    min-width: 30px;
-    white-space: nowrap;
-}
-
-@media print {
-    .progress-handle {
+    &.pdf-mode .handle {
         display: none !important;
     }
-}
-
-.pdf-mode .progress-handle {
-    display: none !important;
-}
-
-.language-label {
-    font-size: 10px;
-    line-height: 104%;
-    font-weight: 500;
-    color: var(--text-accent-color);
-    min-height: 10px;
-    min-width: 30px;
-    white-space: nowrap;
 }

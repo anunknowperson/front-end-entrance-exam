@@ -50,10 +50,6 @@
     display: block;
 }
 
-.editable[contenteditable="true"] {
-    -webkit-user-modify: read-write-plaintext-only;
-}
-
 .accent {
     font-size: var(--text-accent-size)  !important;
     line-height: var(--text-accent-line-height)  !important;

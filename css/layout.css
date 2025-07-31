@@ -87,17 +87,6 @@
     justify-content: space-between;
 }
 
-.grid-item h1,
-.grid-item h2,
-.grid-item h3 {
-    font-size: inherit;
-    margin: 0;
-    font-weight: inherit;
-}
-
-.grid-item p {
-    margin: 0;
-}
 
 
 .block-header-with-buttons {

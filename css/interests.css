@@ -1,25 +1,24 @@
-.interests-block{
+.interests {
     background-color: #F0F0F0;
     padding: 12px;
     border-radius: 12px;
-    
     display: flex;
     flex-direction: column;
     gap: 16px;
-}
 
-.interests-grid {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    gap: 8px;
-}
+    .tag-list {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 8px;
 
-.interest {
-    padding: 4px 10px;
-    border-radius: 40px;
-    background-color: white;
-    font-size: 10px;
-    line-height: 150%;
-    font-weight: 400;
+        .tag {
+            padding: 4px 10px;
+            border-radius: 40px;
+            background-color: white;
+            font-size: 10px;
+            line-height: 150%;
+            font-weight: 400;
+        }
+    }
 }

@@ -10,7 +10,6 @@
     transform: scale(0);
     animation: ripple-animation 0.6s linear;
     pointer-events: none;
-    
 }
 
 .ripple-dark {
@@ -31,7 +30,10 @@
 .interests-block,
 .languages,
 .tools,
-.grid-item {
+.grid-item,
+.education-card,
+.contact-section,
+.interests {
     position: relative;
     overflow: hidden;
 }

@@ -1,5 +1,9 @@
 function createRipple(event, element) {
-    let panelContainer = element.closest('.experience-block, .education-block-panel, .tools-block, .contacts-block, .interests-block');
+    let panelContainer = element.closest('.experience-block, .education-card, .tools, .contact-section, .interests');
+    
+    if (!panelContainer && element.closest('.contact-section')) {
+        panelContainer = element.closest('.contact-section');
+    }
     
     if (!panelContainer) {
         panelContainer = element.closest('.grid-item');
@@ -13,7 +17,7 @@ function createRipple(event, element) {
             panelContainer = element.closest('.tools');
         }
         else if (element.closest('.extra')) {
-            panelContainer = element.closest('.interests-block, .contacts-block') || element.closest('.extra');
+            panelContainer = element.closest('.contact-section') || element.closest('.interests') || element.closest('.extra');
         }
     }
     
@@ -34,7 +38,7 @@ function createRipple(event, element) {
         panelContainer === panelContainer.parentElement.firstElementChild) {
         ripple.classList.add('ripple-dark');
     }
-    if (panelContainer.closest('.contacts-block') || panelContainer.classList.contains('contacts-block')) {
+    if (panelContainer.closest('.contact-section') || panelContainer.classList.contains('contact-section')) {
         ripple.classList.add('ripple-dark');
     }
 
@@ -57,16 +61,16 @@ function initializeRippleEffect() {
         
         if (target.contentEditable === 'true' || 
             target.classList.contains('editable') ||
-            target.classList.contains('interest') ||
-            target.classList.contains('progress-container') ||
-            target.classList.contains('progress-bar')) {
+            target.classList.contains('tag') ||
+            target.classList.contains('slider') ||
+            target.classList.contains('fill')) {
             
             createRipple(event, target);
         }
     });
 
     document.addEventListener('click', (event) => {
-        if (event.target.tagName === 'IMG' && event.target.closest('.tools-grid')) {
+        if (event.target.tagName === 'IMG' && event.target.closest('.icon-grid')) {
             createRipple(event, event.target);
         }
     });

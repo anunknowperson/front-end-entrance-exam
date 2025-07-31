@@ -1,25 +1,29 @@
-.contacts-block{
+.contact-section {
     background-color: black;
     padding: 12px;
     border-radius: 12px;
     justify-content: space-between;
-}
+    display: flex;
+    flex-direction: column;
 
-.contacts-header-label {
-    font-size: 14px !important;
-    line-height: 150% !important;
-    font-weight: 500 !important;
-    color: white;
-    white-space: normal !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word;
-    vertical-align: middle;
-}
+    flex: 1;
 
-.contacts-contact-label {
-    font-size: 10px !important;
-    line-height: 150% !important;
-    font-weight: 400 !important;
-    color: #DDDDDD;
-    vertical-align: middle;
+    .heading {
+        font-size: 14px !important;
+        line-height: 150% !important;
+        font-weight: 500 !important;
+        color: white;
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word;
+        vertical-align: middle;
+    }
+
+    .email {
+        font-size: 10px !important;
+        line-height: 150% !important;
+        font-weight: 400 !important;
+        color: #DDDDDD;
+        vertical-align: middle;
+    }
 }

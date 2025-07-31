@@ -6,34 +6,34 @@ export function restoreDynamicStructure(counts) {
 }
 
 function restoreLanguages(targetCount) {
-    const labelsColumn = document.querySelector('.languages-list .labels-column');
-    const controlsColumn = document.querySelector('.languages-list .controls-column');
-    if (!labelsColumn || !controlsColumn) return;
+    const namesColumn = document.querySelector('.skill-list .names');
+    const levelsColumn = document.querySelector('.skill-list .levels');
+    if (!namesColumn || !levelsColumn) return;
     
-    const currentCount = labelsColumn.children.length;
+    const currentCount = namesColumn.children.length;
     
     if (targetCount > currentCount) {
         for (let i = currentCount; i < targetCount; i++) {
-            const label = document.createElement('div');
-            label.contentEditable = true;
-            label.className = 'editable language-label';
-            label.textContent = 'New Language';
-            labelsColumn.appendChild(label);
+            const name = document.createElement('div');
+            name.contentEditable = true;
+            name.className = 'editable name';
+            name.textContent = 'New Language';
+            namesColumn.appendChild(name);
             
-            const controls = document.createElement('div');
-            controls.className = 'progress-controls';
-            controls.innerHTML = `
-                <div class="progress-container" role="slider" aria-label="Language proficiency" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                    <div class="progress-bar" data-value="50"></div>
-                    <div class="progress-handle"></div>
+            const levelControl = document.createElement('div');
+            levelControl.className = 'level-control';
+            levelControl.innerHTML = `
+                <div class="slider" role="slider" aria-label="Language proficiency" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                    <div class="fill" data-value="50"></div>
+                    <div class="handle"></div>
                 </div>
             `;
-            controlsColumn.appendChild(controls);
+            levelsColumn.appendChild(levelControl);
         }
     } else if (targetCount < currentCount) {
         for (let i = currentCount - 1; i >= targetCount; i--) {
-            labelsColumn.children[i].remove();
-            controlsColumn.children[i].remove();
+            namesColumn.children[i].remove();
+            levelsColumn.children[i].remove();
         }
     }
 }
@@ -50,7 +50,7 @@ function restoreExperienceStructure(targetCount) {
             block.className = 'experience-block';
             block.innerHTML = `
                 <header class="experience-block-head">
-                    <time class="editable regular" contenteditable="true">2025</time>
+                    <span class="editable regular" contenteditable="true">2025</span>
                 </header>
                 <div class="experience-block-content">
                     <div class="experience-job-info">
@@ -85,21 +85,21 @@ function restoreEducation(targetCount) {
     
     if (targetCount > currentCount) {
         for (let i = currentCount; i < targetCount; i++) {
-            const block = document.createElement('article');
-            block.className = 'education-block';
-            block.innerHTML = `
-                <div class="education-block-panel">
-                    <header class="education-top-bar">
-                        <time class="editable education-name-label" contenteditable="true">2024</time>
+            const card = document.createElement('article');
+            card.className = 'education-card';
+            card.innerHTML = `
+                <div class="card-content">
+                    <header class="header">
+                        <div class="editable title" contenteditable="true">2024</div>
                     </header>
-                    <main class="education-content">
-                        <h3 class="editable education-name-label" contenteditable="true">New Course</h3>
-                        <div class="editable education-tags-label" contenteditable="true">#newskill #learning</div>
-                    </main>
+                    <div class="details">
+                        <h3 class="editable title" contenteditable="true">New Course</h3>
+                        <div class="editable tags" contenteditable="true">#newskill #learning</div>
+                    </div>
                     <footer class="editable regular" contenteditable="true">Institution</footer>
                 </div>
             `;
-            educationGrid.appendChild(block);
+            educationGrid.appendChild(card);
         }
     } else if (targetCount < currentCount) {
         for (let i = currentCount - 1; i >= targetCount; i--) {
@@ -109,22 +109,22 @@ function restoreEducation(targetCount) {
 }
 
 function restoreInterests(targetCount) {
-    const interestsGrid = document.querySelector('.interests-grid');
-    if (!interestsGrid) return;
+    const tagList = document.querySelector('.tag-list');
+    if (!tagList) return;
     
-    const currentCount = interestsGrid.children.length;
+    const currentCount = tagList.children.length;
     
     if (targetCount > currentCount) {
         for (let i = currentCount; i < targetCount; i++) {
-            const interest = document.createElement('span');
-            interest.className = 'editable interest';
-            interest.contentEditable = 'true';
-            interest.textContent = 'new interest';
-            interestsGrid.appendChild(interest);
+            const tag = document.createElement('span');
+            tag.className = 'editable tag';
+            tag.contentEditable = 'true';
+            tag.textContent = 'new interest';
+            tagList.appendChild(tag);
         }
     } else if (targetCount < currentCount) {
         for (let i = currentCount - 1; i >= targetCount; i--) {
-            interestsGrid.children[i].remove();
+            tagList.children[i].remove();
         }
     }
 }

@@ -16,34 +16,34 @@ function initializeLanguages() {
     const languagesSection = document.querySelector('.languages');
     const addButton = languagesSection.querySelector('.add-item-btn');
     const deleteButton = languagesSection.querySelector('.delete-btn');
-    const languagesList = languagesSection.querySelector('.languages-list');
-    const labelsColumn = languagesList.querySelector('.labels-column');
-    const controlsColumn = languagesList.querySelector('.controls-column');
+    const skillList = languagesSection.querySelector('.skill-list');
+    const namesColumn = skillList.querySelector('.names');
+    const levelsColumn = skillList.querySelector('.levels');
 
     updateProgressBars();
 
     addButton.addEventListener('click', () => {
-        if (labelsColumn.children.length >= 3) return;
+        if (namesColumn.children.length >= 3) return;
 
-        const newInput = document.createElement('div');
-        newInput.contentEditable = true;
-        newInput.className = 'editable language-label';
-        newInput.textContent = 'New Language';
-        labelsColumn.appendChild(newInput);
+        const newName = document.createElement('div');
+        newName.contentEditable = true;
+        newName.className = 'editable name';
+        newName.textContent = 'New Language';
+        namesColumn.appendChild(newName);
 
-        const newControls = document.createElement('div');
-        newControls.className = 'progress-controls';
-        newControls.innerHTML = `
-            <div class="progress-container" role="slider" aria-label="Language proficiency" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                <div class="progress-bar" data-value="50"></div>
-                <div class="progress-handle"></div>
+        const newLevelControl = document.createElement('div');
+        newLevelControl.className = 'level-control';
+        newLevelControl.innerHTML = `
+            <div class="slider" role="slider" aria-label="Language proficiency" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                <div class="fill" data-value="50"></div>
+                <div class="handle"></div>
             </div>
         `;
-        controlsColumn.appendChild(newControls);
+        levelsColumn.appendChild(newLevelControl);
 
-        initializeProgressBar(newControls);
-        newInput.focus();
-        selectAllText(newInput);
+        initializeSlider(newLevelControl);
+        newName.focus();
+        selectAllText(newName);
         
         setTimeout(() => {
             saveToLocalStorage();
@@ -52,30 +52,30 @@ function initializeLanguages() {
     });
 
     deleteButton.addEventListener('click', () => {
-        labelsColumn.innerHTML = '';
-        controlsColumn.innerHTML = '';
+        namesColumn.innerHTML = '';
+        levelsColumn.innerHTML = '';
         saveToLocalStorage();
         saveProgressBars();
     });
 
-    Array.from(controlsColumn.children).forEach(initializeProgressBar);
+    Array.from(levelsColumn.children).forEach(initializeSlider);
 }
 
-function initializeProgressBar(progressControls) {
-    const progressContainer = progressControls.querySelector('.progress-container');
-    const progressBar = progressControls.querySelector('.progress-bar');
-    const handle = progressControls.querySelector('.progress-handle');
+function initializeSlider(levelControl) {
+    const slider = levelControl.querySelector('.slider');
+    const fill = levelControl.querySelector('.fill');
+    const handle = levelControl.querySelector('.handle');
 
     let isDragging = false;
 
-    updateProgressBar(progressBar, handle);
+    updateSlider(fill, handle);
 
     handle.addEventListener('mousedown', startDrag);
-    progressContainer.addEventListener('click', (e) => {
-        if (e.target === progressContainer || e.target === progressBar) {
-            const rect = progressContainer.getBoundingClientRect();
+    slider.addEventListener('click', (e) => {
+        if (e.target === slider || e.target === fill) {
+            const rect = slider.getBoundingClientRect();
             const percentage = ((e.clientX - rect.left) / rect.width) * 100;
-            setProgress(progressBar, handle, percentage);
+            setProgress(fill, handle, percentage);
             saveProgressBars();
         }
     });
@@ -89,9 +89,9 @@ function initializeProgressBar(progressControls) {
 
     function drag(e) {
         if (!isDragging) return;
-        const rect = progressContainer.getBoundingClientRect();
+        const rect = slider.getBoundingClientRect();
         const percentage = ((e.clientX - rect.left) / rect.width) * 100;
-        setProgress(progressBar, handle, percentage);
+        setProgress(fill, handle, percentage);
     }
 
     function stopDrag() {
@@ -102,26 +102,26 @@ function initializeProgressBar(progressControls) {
     }
 }
 
-function setProgress(progressBar, handle, percentage) {
+function setProgress(fill, handle, percentage) {
     percentage = Math.max(0, Math.min(100, percentage));
-    progressBar.setAttribute('data-value', percentage);
-    progressBar.style.width = percentage + '%';
+    fill.setAttribute('data-value', percentage);
+    fill.style.width = percentage + '%';
     handle.style.left = `calc(${percentage}% - 8px)`;
 }
 
-function updateProgressBar(progressBar, handle) {
-    const value = parseFloat(progressBar.getAttribute('data-value')) || 0;
-    progressBar.style.width = value + '%';
+function updateSlider(fill, handle) {
+    const value = parseFloat(fill.getAttribute('data-value')) || 0;
+    fill.style.width = value + '%';
     handle.style.left = `calc(${value}% - 8px)`;
 }
 
 function updateProgressBars() {
-    const controlsColumn = document.querySelector('.languages-list .controls-column');
-    if (controlsColumn) {
-        Array.from(controlsColumn.children).forEach(progressControls => {
-            const progressBar = progressControls.querySelector('.progress-bar');
-            const handle = progressControls.querySelector('.progress-handle');
-            updateProgressBar(progressBar, handle);
+    const levelsColumn = document.querySelector('.skill-list .levels');
+    if (levelsColumn) {
+        Array.from(levelsColumn.children).forEach(levelControl => {
+            const fill = levelControl.querySelector('.fill');
+            const handle = levelControl.querySelector('.handle');
+            updateSlider(fill, handle);
         });
     }
 }
@@ -139,7 +139,7 @@ function initializeExperience() {
         newBlock.className = 'experience-block';
         newBlock.innerHTML = `
             <header class="experience-block-head">
-                <time class="editable regular" contenteditable="true">2025</time>
+                <span class="editable regular" contenteditable="true">2025</span>
             </header>
             <div class="experience-block-content">
                 <div class="experience-job-info">
@@ -190,7 +190,7 @@ function initializeExperience() {
             e.preventDefault();
 
             const currentItem = e.target;
-            const skillList = currentItem.parentElement;
+            //const skillList = currentItem.parentElement;
 
             const newSkill = document.createElement('li');
             newSkill.className = 'editable regular skill-item';
@@ -243,16 +243,16 @@ function initializeEducation() {
         if (educationGrid.children.length >= 4) return;
 
         const newBlock = document.createElement('article');
-        newBlock.className = 'education-block';
+        newBlock.className = 'education-card';
         newBlock.innerHTML = `
-            <div class="education-block-panel">
-                <header class="education-top-bar">
-                    <time class="editable education-name-label" contenteditable="true">2024</time>
+            <div class="card-content">
+                <header class="header">
+                    <div class="editable title" contenteditable="true">2024</div>
                 </header>
-                <main class="education-content">
-                    <h3 class="editable education-name-label" contenteditable="true">New Course</h3>
-                    <div class="editable education-tags-label" contenteditable="true">#newskill #learning</div>
-                </main>
+                <div class="details">
+                    <h3 class="editable title" contenteditable="true">New Course</h3>
+                    <div class="editable tags" contenteditable="true">#newskill #learning</div>
+                </div>
                 <footer class="editable regular" contenteditable="true">Institution</footer>
             </div>
         `;
@@ -270,28 +270,28 @@ function initializeEducation() {
 
 function initializeInterests() {
     const extraSection = document.querySelector('.extra');
-    const interestsBlock = extraSection.querySelector('.interests-block');
+    const interestsBlock = extraSection.querySelector('.interests');
     const addButton = interestsBlock.querySelector('.add-item-btn');
     const deleteButton = interestsBlock.querySelector('.delete-btn');
-    const interestsGrid = interestsBlock.querySelector('.interests-grid');
+    const tagList = interestsBlock.querySelector('.tag-list');
 
     addButton.addEventListener('click', () => {
-        if (interestsGrid.children.length >= 20) return;
+        if (tagList.children.length >= 20) return;
 
-        const newInterest = document.createElement('span');
-        newInterest.className = 'editable interest';
-        newInterest.contentEditable = 'true';
-        newInterest.textContent = 'new interest';
+        const newTag = document.createElement('span');
+        newTag.className = 'editable tag';
+        newTag.contentEditable = 'true';
+        newTag.textContent = 'new interest';
 
-        interestsGrid.appendChild(newInterest);
-        newInterest.focus();
-        selectAllText(newInterest);
+        tagList.appendChild(newTag);
+        newTag.focus();
+        selectAllText(newTag);
         
         setTimeout(() => saveToLocalStorage(), 100);
     });
 
     deleteButton.addEventListener('click', () => {
-        interestsGrid.innerHTML = '';
+        tagList.innerHTML = '';
         saveToLocalStorage();
     });
 }

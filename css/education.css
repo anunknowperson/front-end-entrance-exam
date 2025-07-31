@@ -1,71 +1,69 @@
 .education-grid {
     gap: 12px;
-
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
 }
 
-.education-block {
-
+.education-card {
     width: 116px;
 
     @media (max-width: 600px) {
-
         width: unset;
     }
-}
 
-.education-block-panel {
+    .card-content {
+        background-color: white;
+        border-radius: 10px;
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
 
-    background-color: white;
-    border-radius: 10px;
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .title {
+            font-size: 10px !important;
+            line-height: 150% !important;
+            font-weight: 500 !important;
+            color: var(--text-accent-color);
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
 
 
-.education-content {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
 
-}
+            .tags {
+                font-size: 8px !important;
+                line-height: 150% !important;
+                font-weight: 400 !important;
+                color: #149063;
+                white-space: normal !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word;
+            }
+        }
+    }
 
-.education-top-bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+    &:first-child {
+        .card-content {
+            background-color: var(--color-primary);
+        }
 
-.education-name-label {
-    font-size: 10px !important;
-    line-height: 150% !important;
-    font-weight: 500 !important;
-    color: var(--text-accent-color);
-}
+        .title,
+        .regular {
+            color: white !important;
+        }
 
-.education-tags-label {
-    font-size: 8px !important;
-    line-height: 150% !important;
-    font-weight: 400 !important;
-    color: #149063;
-    white-space: normal !important;
-    word-wrap: break-word !important;
-    overflow-wrap: break-word;
-}
-
-.education-block:first-child .education-block-panel {
-    background-color: var(--color-primary);
-}
-
-.education-block:first-child .education-name-label,
-.education-block:first-child .regular {
-    color: white !important;
-}
-
-.education-block:first-child .education-tags-label {
-    color: #EBF9F2 !important;
+        .tags {
+            color: #EBF9F2 !important;
+        }
+    }
 }

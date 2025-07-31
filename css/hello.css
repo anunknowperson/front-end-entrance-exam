@@ -1,23 +1,22 @@
-.hello-desc-block {
+.profile-info {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     gap: 6px;
-}
 
-.name-label {
-    font-size: 14px !important;
-    line-height: 104% !important;
-    font-weight: 600 !important;
-    color: #000;
-    margin: 0;
-}
+    .name {
+        font-size: 14px !important;
+        line-height: 104% !important;
+        font-weight: 600 !important;
+        color: #000;
+        margin: 0;
+    }
 
-.specialization-label {
-    font-size: 12px !important;
-    line-height: 150% !important;
-    font-weight: 500 !important;
-    color: #5C5C5C !important;
-    margin: 0;
-
+    .role {
+        font-size: 12px !important;
+        line-height: 150% !important;
+        font-weight: 500 !important;
+        color: #5C5C5C !important;
+        margin: 0;
+    }
 }

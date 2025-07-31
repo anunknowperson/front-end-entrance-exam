@@ -35,7 +35,7 @@ function saveSectionHeaders(headers) {
         headers.education = educationHeader.textContent;
     }
     
-    const interestsHeader = document.querySelector('.interests-block .header-label');
+    const interestsHeader = document.querySelector('.interests .header-label');
     if (interestsHeader) {
         headers.interests = interestsHeader.textContent;
     }
@@ -65,28 +65,28 @@ function saveStaticSections(sections) {
         });
     }
     
-    const contactsBlock = document.querySelector('.contacts-block');
-    if (contactsBlock) {
+    const contactsSection = document.querySelector('.contact-section');
+    if (contactsSection) {
         sections.contacts = {};
-        contactsBlock.querySelectorAll('[contenteditable="true"]').forEach((el, index) => {
+        contactsSection.querySelectorAll('[contenteditable="true"]').forEach((el, index) => {
             sections.contacts[`item_${index}`] = el.textContent;
         });
     }
 }
 
 function saveDynamicSections(data) {
-    const languageLabels = document.querySelectorAll('.languages-list .labels-column .language-label');
+    const languageNames = document.querySelectorAll('.skill-list .names .name');
     data.sections.languages = [];
-    languageLabels.forEach(label => {
-        data.sections.languages.push(label.textContent);
+    languageNames.forEach(name => {
+        data.sections.languages.push(name.textContent);
     });
-    data.dynamicCounts.languages = languageLabels.length;
+    data.dynamicCounts.languages = languageNames.length;
     
     const experienceBlocks = document.querySelectorAll('.experience-rows .experience-block');
     data.sections.experience = [];
     experienceBlocks.forEach(block => {
         const blockData = {
-            date: block.querySelector('.experience-block-head time')?.textContent || '',
+            date: block.querySelector('.experience-block-head span')?.textContent || '',
             role: block.querySelector('.role-name-label')?.textContent || '',
             company: block.querySelector('.job-info-label:first-child')?.textContent || '',
             type: block.querySelector('.job-info-label:last-child')?.textContent || '',
@@ -101,33 +101,33 @@ function saveDynamicSections(data) {
     });
     data.dynamicCounts.experience = experienceBlocks.length;
     
-    const educationBlocks = document.querySelectorAll('.education-grid .education-block');
+    const educationCards = document.querySelectorAll('.education-grid .education-card');
     data.sections.education = [];
-    educationBlocks.forEach(block => {
+    educationCards.forEach(card => {
         const blockData = {
-            date: block.querySelector('.education-top-bar time')?.textContent || '',
-            title: block.querySelector('.education-content h3')?.textContent || '',
-            tags: block.querySelector('.education-tags-label')?.textContent || '',
-            institution: block.querySelector('footer')?.textContent || ''
+            date: card.querySelector('.header .title')?.textContent || '',
+            title: card.querySelector('.details h3')?.textContent || '',
+            tags: card.querySelector('.tags')?.textContent || '',
+            institution: card.querySelector('footer')?.textContent || ''
         };
         data.sections.education.push(blockData);
     });
-    data.dynamicCounts.education = educationBlocks.length;
+    data.dynamicCounts.education = educationCards.length;
     
-    const interests = document.querySelectorAll('.interests-grid .interest');
+    const tags = document.querySelectorAll('.tag-list .tag');
     data.sections.interests = [];
-    interests.forEach(interest => {
-        data.sections.interests.push(interest.textContent);
+    tags.forEach(tag => {
+        data.sections.interests.push(tag.textContent);
     });
-    data.dynamicCounts.interests = interests.length;
+    data.dynamicCounts.interests = tags.length;
 }
 
 export function saveProgressBars() {
-    const progressBars = document.querySelectorAll('.progress-bar');
+    const fills = document.querySelectorAll('.fill');
     const progressData = {};
     
-    progressBars.forEach((bar, index) => {
-        const value = bar.getAttribute('data-value') || '50';
+    fills.forEach((fill, index) => {
+        const value = fill.getAttribute('data-value') || '50';
         progressData[`progress_${index}`] = value;
     });
     
